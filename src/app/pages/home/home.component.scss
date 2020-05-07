@@ -1,6 +1,7 @@
 .container {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -14,5 +15,11 @@
       font-style: italic;
       font-weight: 300;
     }
+  }
+
+  &__form {
+    margin: 0 auto;
+    max-width: 750px;
+    width: 100%;
   }
 }
