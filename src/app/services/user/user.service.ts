@@ -11,12 +11,22 @@ import { SnackbarService } from '../snackbar/snackbar.service';
   providedIn: 'root',
 })
 export class UserService {
-  private user: BehaviorSubject<User> = new BehaviorSubject(undefined);
+  private user = new BehaviorSubject<User>(undefined);
 
   constructor(
     private http: HttpClient,
     private snackbarService: SnackbarService
   ) {}
+
+  searchUserByUserName(userName: string): void {
+    this.user.next(undefined);
+    this._getUserByUserName(userName).subscribe((userResp) => {
+      this._getReposByUserName(userName).subscribe((reposResp) => {
+        userResp.repos = reposResp;
+        this.user.next(userResp);
+      });
+    });
+  }
 
   private _getUserByUserName(userName: string): Observable<User> {
     return this.http.get<User>(`${environment.API_URL}/${userName}`).pipe(
