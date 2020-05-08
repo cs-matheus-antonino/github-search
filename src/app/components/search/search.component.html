@@ -1,6 +1,11 @@
-<form class="container">
-  <input type="text" class="container__input" placeholder="Username" />
-  <button class="container__button">
+<form class="container" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input
+    type="text"
+    class="container__input"
+    placeholder="Username"
+    formControlName="userName"
+  />
+  <button class="container__button" type="submit">
     <i class="container__button__icon"></i>
   </button>
 </form>
