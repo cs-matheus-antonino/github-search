@@ -8,12 +8,13 @@ import { EMPTY, Observable } from 'rxjs';
 export class SnackbarService {
   constructor(private snackBar: MatSnackBar) {}
 
-  showMessageError(msg: string): void {
+  showMessageError(msg: string): Observable<any> {
     this.snackBar.open(msg, 'X', {
       duration: 3000,
       horizontalPosition: 'right',
       verticalPosition: 'top',
       panelClass: ['msg-error'],
     });
+    return EMPTY;
   }
 }
