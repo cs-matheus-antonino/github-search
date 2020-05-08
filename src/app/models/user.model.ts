@@ -9,5 +9,5 @@ export interface User {
   location: string;
   public_repos: number;
   followers: number;
-  repos: Repository[];
+  repos?: Repository[];
 }
