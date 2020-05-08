@@ -18,6 +18,10 @@ export class UserService {
     private snackbarService: SnackbarService
   ) {}
 
+  getUser(): Observable<User> {
+    return this.user.asObservable();
+  }
+
   searchUserByUserName(userName: string): void {
     this.user.next(undefined);
     this._getUserByUserName(userName).subscribe((userResp) => {
