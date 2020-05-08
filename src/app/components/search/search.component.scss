@@ -5,7 +5,7 @@
   &__input {
     width: 100%;
     margin-right: 5px;
-    padding: 14px 5px;
+    padding: 14px 10px;
 
     color: #e4e5e5;
     background-color: #15181b;
@@ -32,6 +32,7 @@
     border: none;
     padding: 10px 10px;
     transition: all 0.5s;
+    outline: none;
 
     &:hover {
       background-color: #6676e0;
@@ -39,7 +40,7 @@
 
     &__icon {
       background: url("/assets/icons/search.svg") center center no-repeat;
-      width: 30px;
+      width: 40px;
       height: 30px;
       display: block;
     }
