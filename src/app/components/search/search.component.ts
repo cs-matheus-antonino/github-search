@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { UserService } from 'src/app/services/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -10,10 +10,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class SearchComponent implements OnInit {
   form;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private userService: UserService
-  ) {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
     this.form = this.formBuilder.group({
       userName: '',
     });
@@ -22,6 +19,8 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    this.userService.searchUserByUserName(this.form.value.userName);
+    this.router.navigate(['/result'], {
+      queryParams: { userName: this.form.value.userName },
+    });
   }
 }
