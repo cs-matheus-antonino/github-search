@@ -11,9 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { SearchComponent } from './components/search/search.component';
 import { ResultComponent } from './pages/result/result.component';
 import { NotFoundComponent } from './components/result/not-found/not-found.component';
+import { LoadingComponent } from './components/result/loading/loading.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, SearchComponent, ResultComponent, NotFoundComponent],
+  declarations: [AppComponent, HomeComponent, SearchComponent, ResultComponent, NotFoundComponent, LoadingComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
