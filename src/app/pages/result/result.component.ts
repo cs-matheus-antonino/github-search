@@ -28,8 +28,9 @@ export class ResultComponent implements OnInit {
     this.userService.getUser().subscribe((user) => {
       if (user) {
         this.user = user;
-        this.loading = false;
       }
     });
+
+    this.loading = false;
   }
 }
