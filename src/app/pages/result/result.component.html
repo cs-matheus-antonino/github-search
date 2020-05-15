@@ -7,4 +7,8 @@
       <app-search></app-search>
     </div>
   </header>
+
+  <section>
+    <app-not-found *ngIf="!user && loading === false"></app-not-found>
+  </section>
 </main>
