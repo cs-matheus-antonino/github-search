@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -14,7 +15,14 @@ import { NotFoundComponent } from './components/result/not-found/not-found.compo
 import { LoadingComponent } from './components/result/loading/loading.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, SearchComponent, ResultComponent, NotFoundComponent, LoadingComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    SearchComponent,
+    ResultComponent,
+    NotFoundComponent,
+    LoadingComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,6 +30,7 @@ import { LoadingComponent } from './components/result/loading/loading.component'
     MatSnackBarModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
