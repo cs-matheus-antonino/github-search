@@ -3,12 +3,13 @@
     <h1 class="container__header__title">
       Github <span class="container__header__title--italic">Search</span>
     </h1>
-    <div class="container__form">
+    <div class="container__header__form">
       <app-search></app-search>
     </div>
   </header>
 
   <section>
+    <app-loading *ngIf="loading"></app-loading>
     <app-not-found *ngIf="!user && loading === false"></app-not-found>
   </section>
 </main>
