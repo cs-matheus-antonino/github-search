@@ -39,9 +39,12 @@ export class UserService {
   private _getUserByUserName(userName: string): Observable<User> {
     return this.http.get<User>(`${environment.API_URL}/${userName}`).pipe(
       map((obj) => obj),
-      catchError(() =>
-        this.snackbarService.showMessageError('Erro ao carregar usuário!')
-      )
+      catchError(() => {
+        this.loadingService.hideLoading();
+        return this.snackbarService.showMessageError(
+          'Erro ao carregar usuário!'
+        );
+      })
     );
   }
 
@@ -50,11 +53,12 @@ export class UserService {
       .get<Repository[]>(`${environment.API_URL}/${userName}/repos`)
       .pipe(
         map((obj) => obj),
-        catchError(() =>
-          this.snackbarService.showMessageError(
+        catchError(() => {
+          this.loadingService.hideLoading();
+          return this.snackbarService.showMessageError(
             'Erro ao carregar repositórios!'
-          )
-        )
+          );
+        })
       );
   }
 }
