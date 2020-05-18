@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Repository } from 'src/app/models/repository.model';
 import { User } from 'src/app/models/user.model';
 import { SnackbarService } from '../snackbar/snackbar.service';
+import { LoadingService } from '../loading/loading.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,8 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private snackbarService: SnackbarService
+    private snackbarService: SnackbarService,
+    private loadingService: LoadingService
   ) {}
 
   getUser(): Observable<User> {
@@ -23,11 +25,13 @@ export class UserService {
   }
 
   searchUserByUserName(userName: string): void {
+    this.loadingService.showLoading();
     this.user.next(undefined);
     this._getUserByUserName(userName).subscribe((userResp) => {
       this._getReposByUserName(userName).subscribe((reposResp) => {
         userResp.repos = reposResp;
         this.user.next(userResp);
+        this.loadingService.hideLoading();
       });
     });
   }

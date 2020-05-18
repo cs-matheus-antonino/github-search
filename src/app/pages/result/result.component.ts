@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user/user.service';
+import { LoadingService } from 'src/app/services/loading/loading.service';
 
 @Component({
   selector: 'app-result',
@@ -11,15 +12,16 @@ import { UserService } from 'src/app/services/user/user.service';
 export class ResultComponent implements OnInit {
   user: User;
   userName: string;
-  loading = false;
+  loading: boolean;
 
   constructor(
     private userService: UserService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private loadingService: LoadingService
   ) {}
 
   ngOnInit(): void {
-    this.loading = true;
+    this.loadingService.getLoading().subscribe((flag) => (this.loading = flag));
 
     this.activatedRoute.queryParams.subscribe((params) => {
       this.userService.searchUserByUserName(params.userName);
@@ -30,7 +32,5 @@ export class ResultComponent implements OnInit {
         this.user = user;
       }
     });
-
-    this.loading = false;
   }
 }
