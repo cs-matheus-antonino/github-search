@@ -8,21 +8,20 @@
     </div>
   </header>
 
-  <section class="container__user" *ngIf="true">
+  <section class="container__user" *ngIf="user && loading === false">
     <div class="container__user__profile">
       <img
         class="container__user__profile__image"
-        src="https://avatars2.githubusercontent.com/u/60790091?s=460&u=158e08cf5e1b531cea0ae5ad3343ff887b228214&v=4"
+        src="{{ user.avatar_url }}"
         alt="image"
       />
 
       <div class="container__user__profile__data">
         <p class="container__user__profile__data__name">
-          Matheus Trajano Antonino
+          {{ user.name }}
         </p>
         <p class="container__user__profile__data__bio">
-          Hi, I`m computer science undergrad. ReactJS | React-Native developer
-          and always learning something new.
+          {{ user.bio }}
         </p>
 
         <div class="container__user__profile__data__social">
@@ -32,7 +31,7 @@
             class="container__user__profile__data__social__icon"
           />
           <p class="container__user__profile__data__social__title">
-            Companhia
+            {{ user.company }}
           </p>
         </div>
         <div class="container__user__profile__data__social">
@@ -42,7 +41,7 @@
             class="container__user__profile__data__social__icon"
           />
           <p class="container__user__profile__data__social__title">
-            Location
+            {{ user.location }}
           </p>
         </div>
         <div class="container__user__profile__data__social">
@@ -52,7 +51,7 @@
             class="container__user__profile__data__social__icon"
           />
           <p class="container__user__profile__data__social__title">
-            Repositories
+            {{ user.public_repos }} Repositories
           </p>
         </div>
         <div class="container__user__profile__data__social">
@@ -62,7 +61,7 @@
             class="container__user__profile__data__social__icon"
           />
           <p class="container__user__profile__data__social__title">
-            followers
+            {{ user.followers }} Followers
           </p>
         </div>
       </div>
@@ -78,4 +77,3 @@
     <app-not-found></app-not-found>
   </section>
 </main>
-<!-- user && loading === false -->
