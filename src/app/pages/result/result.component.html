@@ -8,8 +8,66 @@
     </div>
   </header>
 
-  <section class="container__user" *ngIf="user && loading === false">
-    <h1>Ola</h1>
+  <section class="container__user" *ngIf="true">
+    <div class="container__user__profile">
+      <img
+        class="container__user__profile__image"
+        src="https://avatars2.githubusercontent.com/u/60790091?s=460&u=158e08cf5e1b531cea0ae5ad3343ff887b228214&v=4"
+        alt="image"
+      />
+
+      <div class="container__user__profile__data">
+        <p class="container__user__profile__data__name">
+          Matheus Trajano Antonino
+        </p>
+        <p class="container__user__profile__data__bio">
+          Hi, I`m computer science undergrad. ReactJS | React-Native developer
+          and always learning something new.
+        </p>
+
+        <div class="container__user__profile__data__social">
+          <img
+            src="/assets/icons/group_work.svg"
+            alt="icon"
+            class="container__user__profile__data__social__icon"
+          />
+          <p class="container__user__profile__data__social__title">
+            Companhia
+          </p>
+        </div>
+        <div class="container__user__profile__data__social">
+          <img
+            src="/assets/icons/location.svg"
+            alt="icon"
+            class="container__user__profile__data__social__icon"
+          />
+          <p class="container__user__profile__data__social__title">
+            Location
+          </p>
+        </div>
+        <div class="container__user__profile__data__social">
+          <img
+            src="/assets/icons/ballot.svg"
+            alt="icon"
+            class="container__user__profile__data__social__icon"
+          />
+          <p class="container__user__profile__data__social__title">
+            Repositories
+          </p>
+        </div>
+        <div class="container__user__profile__data__social">
+          <img
+            src="/assets/icons/people.svg"
+            alt="icon"
+            class="container__user__profile__data__social__icon"
+          />
+          <p class="container__user__profile__data__social__title">
+            followers
+          </p>
+        </div>
+      </div>
+    </div>
+    <div><p>dele</p></div>
   </section>
 
   <section class="container__warning" *ngIf="!user && loading === true">
@@ -20,3 +78,4 @@
     <app-not-found></app-not-found>
   </section>
 </main>
+<!-- user && loading === false -->
