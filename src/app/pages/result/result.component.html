@@ -8,8 +8,15 @@
     </div>
   </header>
 
-  <section>
-    <app-loading *ngIf="loading"></app-loading>
-    <app-not-found *ngIf="!user && loading === false"></app-not-found>
+  <section class="container__user" *ngIf="user && loading === false">
+    <h1>Ola</h1>
+  </section>
+
+  <section class="container__warning" *ngIf="!user && loading === true">
+    <app-loading *ngIf="true"></app-loading>
+  </section>
+
+  <section class="container__warning" *ngIf="!user && loading === false">
+    <app-not-found></app-not-found>
   </section>
 </main>
