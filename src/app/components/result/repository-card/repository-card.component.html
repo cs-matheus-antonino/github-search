@@ -1,1 +1,34 @@
-<p>repository-card works!</p>
+<div class="container">
+  <div class="container__title-box">
+    <img
+      src="/assets/icons/link.svg"
+      alt="icon"
+      class="container__title-box__icon"
+    />
+    <a href="{{ repo.html_url }}" class="container__title-box__title">{{
+      repo.name
+    }}</a>
+  </div>
+
+  <p class="container__description">{{ repo.description }}</p>
+
+  <div class="container__info-box">
+    <img
+      src="/assets/icons/star.svg"
+      alt="icon"
+      class="container__info-box__icon"
+    />
+    <p class="container__info-box__title">
+      {{ repo.stargazers_count }}
+    </p>
+
+    <img
+      src="/assets/icons/code.svg"
+      alt="icon"
+      class="container__info-box__icon"
+    />
+    <p class="container__info-box__title">
+      {{ repo.language }}
+    </p>
+  </div>
+</div>

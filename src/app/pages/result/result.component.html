@@ -66,7 +66,12 @@
         </div>
       </div>
     </div>
-    <div><p>dele</p></div>
+    <div class="container__user__repositories">
+      <app-repository-card
+        *ngFor="let repo of user.repos"
+        [repo]="repo"
+      ></app-repository-card>
+    </div>
   </section>
 
   <section class="container__warning" *ngIf="!user && loading === true">
