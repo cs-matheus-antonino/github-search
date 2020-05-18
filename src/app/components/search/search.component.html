@@ -2,7 +2,7 @@
   <input
     type="text"
     class="container__input"
-    placeholder="Username"
+    placeholder="{{ placeholder ? placeholder : 'userName' }}"
     formControlName="userName"
   />
   <button class="container__button" type="submit">

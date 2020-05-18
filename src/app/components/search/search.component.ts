@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
+  @Input() placeholder: string;
   form;
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
