@@ -7,6 +7,7 @@ import { Repository } from 'src/app/models/repository.model';
 import { User } from 'src/app/models/user.model';
 import { SnackbarService } from '../snackbar/snackbar.service';
 import { LoadingService } from '../loading/loading.service';
+import { sortRepositories } from 'src/app/util/sort-repositories';
 
 @Injectable({
   providedIn: 'root',
@@ -29,9 +30,11 @@ export class UserService {
     this.user.next(undefined);
     this._getUserByUserName(userName).subscribe((userResp) => {
       this._getReposByUserName(userName).subscribe((reposResp) => {
-        userResp.repos = reposResp;
-        this.user.next(userResp);
-        this.loadingService.hideLoading();
+        if (reposResp) {
+          userResp.repos = sortRepositories(reposResp);
+          this.user.next(userResp);
+          this.loadingService.hideLoading();
+        }
       });
     });
   }
@@ -40,6 +43,7 @@ export class UserService {
     return this.http.get<User>(`${environment.API_URL}/${userName}`).pipe(
       map((obj) => obj),
       catchError(() => {
+        this.user.next(undefined);
         this.loadingService.hideLoading();
         return this.snackbarService.showMessageError(
           'Erro ao carregar usuário!'
@@ -54,6 +58,7 @@ export class UserService {
       .pipe(
         map((obj) => obj),
         catchError(() => {
+          this.user.next(undefined);
           this.loadingService.hideLoading();
           return this.snackbarService.showMessageError(
             'Erro ao carregar repositórios!'
